@@ -1,7 +1,8 @@
 <!-- .slide: data-background="../img/2022/dev-summit/bg-1.png" data-background-size="cover -->
 <h1 style="text-align: left; font-size: 80px;">Using TypeScript</h1>
 <h2 style="text-align: left; font-size: 60px;">with the ArcGIS API for JavaScript</h2>
-<p style="text-align: left; font-size: 30px;">Noah Sageri</p>
+<p style="text-align: left; font-size: 30px;">Noah Sager</p>
+<p style="text-align: left; font-size: 30px;"><a href="https://twitter.com/noashx">@noashx</a></p>
 <p style="text-align: left; font-size: 30px;">René Rubalcava</p>
 <p style="text-align: left; font-size: 30px;"><a href="https://twitter.com/odoenet">@odoenet</a></p>
 
