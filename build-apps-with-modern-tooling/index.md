@@ -27,7 +27,16 @@
 * Used to concatenate JS files
 * JSMin to minify (maybe)
 
-<img src="./images/concat.png" height="50%" width="50%" alt="JavaScript">
+```js
+// start.js
+(function (){
+
+// multiple js files of code
+// code1.js, code2.js, ...
+
+// finish.js
+})();
+```
 
 ---
 
