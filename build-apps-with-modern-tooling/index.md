@@ -15,8 +15,10 @@
 
 ---
 
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-7.png" -->
-# Modern Web Development
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-5.png" -->
+
+<h2 style="text-align: left; font-size: 80px;">Modern Web</h2>
+<h2 style="text-align: left; font-size: 80px;">Development</h2>
 
 ---
 
@@ -79,14 +81,101 @@
 ---
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-## Modern Web Development
+## Frameworks
 
-* CSS
-* Sass
-* CSS Modules
-* Flexbox
-* CSS Grid
-* Houdini
+* React
+* Vue
+* Angular
+* Svelte
+* Ember
+* Solid
+* ... and more, and more
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## More
+
+* Unit Testing
+* Web Components
+* Monorepos
+* Server-Side Rendering
+* Progressive Web Apps
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Why
+
+* Don't get overwhelmed
+* Focus on what works for you
+* Ignore the noise
+* Your users don't care
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Build an app
+
+* Bring it all together to build an app
+* Vite - uses esbuild and rollup under the hood
+* TypeScript, Vue, Pinia, vue-router
+* Calcite Components
+* Jest
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-4.png" -->
+
+<h2 style="text-align: left; font-size: 60px;">Nearby App Demo</h2>
+<p style="text-align: left; font-size: 30px;"><a href="https://github.com/odoe/nearby-app">github.com/odoe/nearby-app</a></p>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Design
+
+<img src="./images/atomic-design-app-dev.png" height="80%" width="80%" alt="Atomic Design">
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Vite Config
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('calcite-'),
+        },
+      },
+    }),
+  ],
+})
+```
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Routing
+
+* vue-router
+  * Lazy load assets
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Demo
+
+<img src="./images/nearby-app-home.png" height="25%" width="25%" alt="Nearby App Home">
+<img src="./images/nearby-app-map.png" height="25%" width="25%" alt="Nearby App Map">
 
 ---
 
@@ -96,16 +185,11 @@
 - SDK Documentation
 - Esri-related training and webinars
 - ArcGIS Blogs
-- GeoNet, StackExchange, etc.</br>
-</br>
-<a href="https://www.esri.com/arcgis-blog/products/js-api-arcgis/mapping/using-typescript-with-the-arcgis-api-for-javascript/" target="_blank">
-<img style="float:bottom;" src="./images/Using_TS_blog.png" alt="Using_TS_blog">
+- GeoNet, StackExchange, etc.
 
 ---
 
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-5.png" -->
-
-![esri](images/esri-science-logo-white.png "esri")
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-8.png" -->
 
 ---
 
