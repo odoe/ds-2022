@@ -172,6 +172,36 @@ export default defineConfig({
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
+## Authentication and API Keys
+
+* OAuth
+  - Useful if using _private_ content
+* API Key
+  - Using platform basemaps and/or location services
+* Cannot use both together
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Authentication and API Keys
+
+* Use Environment Variables
+
+```js
+// supported in most build tools
+config.apiKey = process.env.API_KEY
+
+// vite uses import.meta
+config.apiKey = import.meta.env.VITE_API_KEY
+```
+
+* Please do not check in keys to git
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
 ## Demo
 
 <img src="./images/nearby-app-home.png" height="25%" width="25%" alt="Nearby App Home">
