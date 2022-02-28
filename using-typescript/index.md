@@ -155,12 +155,12 @@ import MapView from "@arcgis/core/views/MapView";
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## Demo Steps:
-</br>
+
+I just use Vite
 
 ```sh
-mkdir ts-demo && cd ts-demo
-mkdir src && touch src/index.ts
-npm init --yes && tsc --init
+npm create vite@latest
+cd ts-demo
 npm i @arcgis/core
 ```
 
@@ -173,7 +173,7 @@ npm i @arcgis/core
 ```html
 <body>
   <div id="viewDiv"></div>
-  <script src="src/index.js" type="module"></script>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 ```
 
@@ -181,7 +181,8 @@ npm i @arcgis/core
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## tsconfig.json
-</br>
+
+Barebones config
 
 ```json
 {
@@ -202,87 +203,72 @@ npm i @arcgis/core
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## css
-</br>
 
 ```css
-@import url("https://js.arcgis.com/4.20/esri/themes/light/main.css");
+@import url("https://js.arcgis.com/4.22/esri/themes/light/main.css");
 
 html,
 body,
 #viewDiv {
   padding: 0;
   margin: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 ```
 
 ---
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-## src/index.ts
-</br>
+## src/app.ts
 
 > imports
-</br>
 
 ```ts
-import WebMap from "@arcgis/core/WebMap";
-import MapView from "@arcgis/core/views/MapView";
-import LayerList from "@arcgis/core/widgets/LayerList";
-
+import Accessor from '@arcgis/core/core/Accessor';
+import Collection from '@arcgis/core/core/Collection';
+import config from '@arcgis/core/config';
+import ArcGISMap from '@arcgis/core/Map';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
+import MapView from '@arcgis/core/views/MapView';
+import FeatureLayerView from '@arcgis/core/views/layers/FeatureLayerView';
+import { whenOnce } from '@arcgis/core/core/watchUtils';
+import SimpleRenderer from '@arcgis/core/renderers/SimpleRenderer';
+import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol';
+import SizeVariable from '@arcgis/core/renderers/visualVariables/SizeVariable';
+import { subclass, property } from '@arcgis/core/core/accessorSupport/decorators';
 ```
 
 ---
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-## src/index.ts
-</br>
+## src/main.ts
 
-> WebMap and MapView
+> Map and MapView
 
 ```ts
-const map = new WebMap({
-  portalItem: {
-    id: 'd5dda743788a4b0688fe48f43ae7beb9'
-  }
-});
+import './style.css'
+import App from './app';
 
-// Add the map to a MapView
-const view = new MapView({
-  container: 'viewDiv',
-  map
+const apiKey = import.meta.env.VITE_API_KEY as string;
+const app = new App({ apiKey });
+
+app.watch('loaded', () => {
+  console.log('app is loaded')
+})
+
+app.layerViews.on('after-add', (event) => {
+  console.log(event.item);
 });
 ```
 
 ---
 
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-## src/index.ts
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-4.png" -->
 
-> LayerList
-
-```ts
-// Add Legend instance to panel of a ListItem in a LayerList
-const layerList = new LayerList({
-  view,
-  listItemCreatedFunction: (event: { item: __esri.ListItem }) => {
-    const item = event.item;
-    if (item.layer.type != 'group') {
-      item.panel = {
-        content: 'legend',
-        open: true
-      } as __esri.ListItemPanel;
-    }
-  }
-});
-view.ui.add(layerList, 'top-right');
-```
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-> Demo
+<h2 style="text-align: left; font-size: 60px;">TypeScript App</h2>
+<h2 style="text-align: left; font-size: 60px;">Demo</h2>
+<p style="text-align: left; font-size: 30px;"><a href="https://github.com/odoe/arcgis-ts-demo">github.com/odoe/arcgis-ts-demo</a></p>
 
 ---
 

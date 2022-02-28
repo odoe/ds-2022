@@ -110,7 +110,7 @@
 * Don't get overwhelmed
 * Focus on what works for you
 * Ignore the noise
-* Your users don't care
+* _Your users don't care_
 
 ---
 
