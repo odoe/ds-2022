@@ -291,10 +291,5 @@ app.layerViews.on('after-add', (event) => {
 
 ---
 
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-5.png" -->
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-8.png" -->
 
-![esri](images/esri-science-logo-white.png "esri")
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/2021-feedback.jpg" -->
