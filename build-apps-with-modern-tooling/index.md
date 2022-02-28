@@ -172,6 +172,18 @@ export default defineConfig({
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
+## Progressive Web App
+
+* Not entirely focused on performance
+* Native App experience
+* Easy with plugins
+  - vite has [vite-plugin-pwa](https://vite-plugin-pwa.netlify.app/)
+  - [Google Workbox](https://developers.google.com/web/tools/workbox/) for workers
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
 ## Authentication and API Keys
 
 * OAuth
