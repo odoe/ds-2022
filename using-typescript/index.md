@@ -9,10 +9,33 @@
 ---
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-## **Developer Setup**
+## Agenda
+</br>
 
-<a href="https://developers.arcgis.com/javascript/latest/guide/typescript-setup/index.html" target="_blank">
-<img src="images/TypeScript - Setting up.png" alt="TypeScript - Setting up">
+ - What is TypeScript?
+ - Why use TypeScript?
+ - Setup and first steps
+ - Tips and tricks
+ - Live demo
+ - Where can I get more info?
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## What is TypeScript?
+
+<a href="https://www.typescriptlang.org/" target="_blank">
+<img style="float:center;" src="images/TypeScript_Superset_JavaScript.png" alt="TypeScript_Superset_JavaScript">
+</a>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Where do I begin?
+</br>
+
+<a href="https://www.typescriptlang.org/" target="_blank">
+<img src="images/TS_Website.png" alt="TypeScript landing page">
 </a>
 
 ---
@@ -21,8 +44,58 @@
 ## **Developer Setup**
 
 <a href="https://developers.arcgis.com/javascript/latest/guide/typescript-setup/index.html" target="_blank">
-<img src="images/TS_setup.png" alt="Setup_TS">
+<img src="images/TS_setup2.png" alt="Setup_TS">
 </a>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Benefits of TypeScript
+</br>
+
+- Easier to test
+- Easier to refactor
+- Easier for multiple people to work on
+- Can help prevent technical debt
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Why use TypeScript?
+</br>
+TypeScript adds *type* support to JavaScript
+</br>
+</br>
+<img src="images/TS_1a.png" alt="TypeScript_Example1">
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Why use TypeScript?
+</br>
+Enhanced IDE support
+</br>
+<img src="images/TS_2.png" alt="TypeScript_Example2">
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Why use TypeScript?
+</br>
+Makes use of the latest JavaScript features
+</br>
+</br>
+<img src="images/promise_async_await_carbon4.png" alt="TypeScript_Example3">
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Why use TypeScript?
+</br>
+Makes use of the latest JavaScript features
+</br>
+</br>
+<img src="images/dynamicModule2.png" alt="TypeScript_Example4">
 
 ---
 
@@ -43,7 +116,14 @@ npm install --save @arcgis/core
 ---
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+#### Tips and live demo
+<img style="float:center;" src="images/wheres_rene.png" alt="Rene_Softwhere_Engineer">
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## Imports
+</br>
 
 ```ts
 import MapView from "@arcgis/core/views/MapView";
@@ -52,11 +132,12 @@ import MapView from "@arcgis/core/views/MapView";
 ---
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-## Auto-cast
+## Autocasting
+</br>
 
-- Due to nature of types, auto-cast does not type-check
+- Due to nature of types, autocast does not type-check
   - `get` and `set` must have the same type
-- Auto-casting is supported in constructor signatures only
+- Autocasting is supported in constructor signatures only
   - Still helps in lots of cases
   - For setting properties, need to import the relevant modules
 
@@ -64,6 +145,7 @@ import MapView from "@arcgis/core/views/MapView";
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## Typing improvements
+</br>
 
 - Use of generics where possible `Collection<T>`
 - Strictly type events (`mapView.on("mouse-wheel", ...)`))
@@ -73,6 +155,7 @@ import MapView from "@arcgis/core/views/MapView";
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## Demo Steps:
+</br>
 
 ```sh
 mkdir ts-demo && cd ts-demo
@@ -85,6 +168,7 @@ npm i @arcgis/core
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## index.html
+</br>
 
 ```html
 <body>
@@ -97,6 +181,7 @@ npm i @arcgis/core
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## tsconfig.json
+</br>
 
 ```json
 {
@@ -117,6 +202,7 @@ npm i @arcgis/core
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## css
+</br>
 
 ```css
 @import url("https://js.arcgis.com/4.20/esri/themes/light/main.css");
@@ -135,8 +221,10 @@ body,
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## src/index.ts
+</br>
 
 > imports
+</br>
 
 ```ts
 import WebMap from "@arcgis/core/WebMap";
@@ -149,6 +237,7 @@ import LayerList from "@arcgis/core/widgets/LayerList";
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 ## src/index.ts
+</br>
 
 > WebMap and MapView
 
@@ -174,8 +263,7 @@ const view = new MapView({
 > LayerList
 
 ```ts
-// Add a legend instance to the panel of a
-// ListItem in a LayerList instance
+// Add Legend instance to panel of a ListItem in a LayerList
 const layerList = new LayerList({
   view,
   listItemCreatedFunction: (event: { item: __esri.ListItem }) => {
@@ -204,10 +292,16 @@ view.ui.add(layerList, 'top-right');
 - SDK Documentation
 - Esri-related training and webinars
 - ArcGIS Blogs
-- GeoNet, StackExchange, etc.</br>
+- Esri Community, StackExchange, etc.</br>
 </br>
 <a href="https://www.esri.com/arcgis-blog/products/js-api-arcgis/mapping/using-typescript-with-the-arcgis-api-for-javascript/" target="_blank">
 <img style="float:bottom;" src="./images/Using_TS_blog.png" alt="Using_TS_blog">
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-3.png" -->
+
+<img style="float:center;" src="images/survey.png" alt="survey">
 
 ---
 
