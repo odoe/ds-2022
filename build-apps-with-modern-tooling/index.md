@@ -208,7 +208,7 @@ config.apiKey = process.env.API_KEY
 config.apiKey = import.meta.env.VITE_API_KEY
 ```
 
-* Please do not check in keys to git
+* Please do not commit your keys to git
 
 ---
 
