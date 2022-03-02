@@ -171,13 +171,37 @@ require(["./code1", "code2"], function (code1, code2) {
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
+## Vite
+
+Yannik (it just work, maybe show a config?)
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Webpack
+
+René
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
 ## Languages
 
 - JavaScript
-- Web Assembly
 - TypeScript
+- Web Assembly
 - Elm
 - Reason
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Typescript
+
+Yannik
 
 ---
 
@@ -191,6 +215,30 @@ require(["./code1", "code2"], function (code1, code2) {
 - Flexbox
 - CSS Grid
 - Houdini
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## CSS
+
+Yannik: css variables from the API
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Sass
+
+Yannik: setup of sass with our API
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Calcite components
+
+Yannik
 
 ---
 
@@ -210,7 +258,23 @@ require(["./code1", "code2"], function (code1, code2) {
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
-## More
+## React
+
+Yannik: to show how to have simple setup with the API
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Vue
+
+René: to show how to have simple setup with the API
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## More...
 
 - Unit Testing
 - Web Components
@@ -233,7 +297,7 @@ require(["./code1", "code2"], function (code1, code2) {
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
-## Build an app
+## Build a more complex app using Vue, Vite, Sass
 
 - Bring it all together to build an app
 - Vite - uses esbuild and rollup under the hood
@@ -304,6 +368,25 @@ export default defineConfig({
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
+## Demo
+
+<img src="./images/nearby-app-home.png" height="25%" width="25%" alt="Nearby App Home">
+<img src="./images/nearby-app-map.png" height="25%" width="25%" alt="Nearby App Map">
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+### Tips & Tricks
+
+- Authentifcation
+- CDN
+- Optimisation for 3D (quality mode, OpenGL requirements)
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
 ## Authentication and API Keys
 
 - OAuth
@@ -329,15 +412,6 @@ config.apiKey = import.meta.env.VITE_API_KEY;
 ```
 
 - Please do not commit your keys to git
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## Demo
-
-<img src="./images/nearby-app-home.png" height="25%" width="25%" alt="Nearby App Home">
-<img src="./images/nearby-app-map.png" height="25%" width="25%" alt="Nearby App Map">
 
 ---
 
