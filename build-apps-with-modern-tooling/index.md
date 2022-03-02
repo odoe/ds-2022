@@ -127,9 +127,9 @@ require(["./code1", "code2"], function (code1, code2) {
   import SceneView from 
     &quot;https://jsdev.arcgis.com/4.23/@arcgis/core/views/SceneView.js&quot;;
   var view = new SceneView({
-    container: &amp;quot;viewDiv&amp;quot;,
+    container: "viewDiv",
     map: {
-      basemap: &amp;quot;topo&amp;quot;,
+      basemap: "topo",
     },
   });
 &lt;/script&gt;
