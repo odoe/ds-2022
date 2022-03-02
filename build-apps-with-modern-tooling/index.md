@@ -181,7 +181,78 @@ Yannik (it just work, maybe show a config?)
 
 ## Webpack
 
-René
+"Simple" Config
+
+```js
+module.exports = {
+  entry: {
+    index: './src/index.js'
+  },
+  node: false,
+  output: {
+    path: path.join(__dirname, 'dist'),
+    chunkFilename: 'chunks/[id].js',
+    publicPath: '',
+    clean: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      },
+    ]
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      title: 'ArcGIS API  for JavaScript',
+      template: './public/index.html',
+      filename: './index.html',
+      chunksSortMode: 'none',
+      inlineSource: '.(css)$'
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[chunkhash].css",
+      chunkFilename: "[id].css"
+    })
+  ]
+};
+```
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Webpack
+
+[`@arcgis/webpack-plugin`](https://github.com/Esri/arcgis-webpack-plugin)
+* Useful to copy assets locally
+* Can filter unused assets
+
+```js
+// webpack.config.js
+module.exports = {
+  ...
+  plugins: [
+    new ArcGISPlugin({
+      locales: ['en', 'es']
+    })
+  ]
+  ...
+}
+```
 
 ---
 
@@ -268,7 +339,39 @@ Yannik: to show how to have simple setup with the API
 
 ## Vue
 
-René: to show how to have simple setup with the API
+* Using Calcite Components?
+  - Don't let Vue compile them
+
+```js
+compilerOptions: {
+  isCustomElement: (tag) => tag.includes('calcite-'),
+},
+```
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Vue
+
+* Limitations
+* Vue reactivity uses Proxy
+  - Don't store ArcGIS instances directly
+
+```js
+import { reactive, watchEffect } from 'vue'
+
+const data = reactive({ map: webmap, layer: null });
+
+watchEffect(() => {
+  if (data.layer) {
+    data.map.add(data.layer)
+  }
+});
+
+// Errors out
+data.layer = new FeatureLayer(params)
+```
 
 ---
 
