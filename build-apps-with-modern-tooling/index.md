@@ -685,3 +685,5 @@ config.apiKey = import.meta.env.VITE_API_KEY;
 <img style="float:center;" src="images/survey.png" alt="survey">
 
 ---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-8.png" -->
