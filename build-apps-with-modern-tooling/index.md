@@ -173,7 +173,48 @@ require(["./code1", "code2"], function (code1, code2) {
 
 ## Vite
 
-Yannik (it just work, maybe show a config?)
+<div class="two-columns">
+  <div class="left-column">
+    <div data-fragment-id="add-widget" class="code-snippet">
+      <pre>
+        <code class="lang-html" data-trim data-line-numbers>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link
+      rel=&quot;stylesheet&quot;
+      href=&quot;https://js.arcgis.com/4.23/esri/themes/light/main.css&quot;
+    /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./src/main.css&quot; /&gt;
+    &lt;script type=&quot;module&quot; src=&quot;./src/main.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;viewDiv&quot;&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </code>
+      </pre>
+    </div>
+  </div>
+  <div class="right-column">
+    <pre>
+      <code class="lang-html" data-trim data-line-numbers>
+        mkdir test-vite & cd test-vite
+        npm init
+        npm install --save @arcgis/core
+        npm install --save vite
+        npx vite dev
+      </code>
+    </pre>
+    <br/>
+     <pre class="fragment">
+      <code class="lang-shell" data-trim data-line-numbers>
+        npx vite build
+      </code>
+    </pre>
+    <div class="fragment">
+      <img src="./images/vite-build.png" />
+  </div>
+</div>
 
 ---
 
@@ -272,7 +313,61 @@ module.exports = {
 
 ## Typescript
 
-Yannik
+```json
+{
+  "compilerOptions": {
+    "target": "es6"
+  },
+  "include": ["**/*.ts", "src/main.js"],
+  "exclude": ["**/node_modules/**"]
+}
+```
+
+```html
+<script type="module" src="src/main.ts"></script>
+```
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Adding some UI elements
+
+<div class="two-columns">
+  <div class="left-column">
+    <div data-fragment-id="add-widget" class="code-snippet">
+      <pre>
+        <code class="lang-html" data-trim data-line-numbers>
+&lt;div id=&quot;app&quot; class=&quot;esri-widget&quot;&gt;
+  &lt;h2&gt;Choose basemap&lt;/h2&gt;
+  &lt;select id=&quot;basemap&quot;&gt;
+    &lt;option value=&quot;topo-vector&quot;&gt;Topo&lt;/option&gt;
+    &lt;option value=&quot;satellite&quot;&gt;Satellite&lt;/option&gt;
+    &lt;option value=&quot;oceans&quot;&gt;Oceans&lt;/option&gt;
+    &lt;option value=&quot;osm&quot;&gt;Open Street Map&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+        </code>
+      </pre>
+    </div>
+    <div class="code-snippet fragment">
+      <pre>
+        <code class="lang-css" data-trim data-line-numbers>
+#app h2 {
+  font-size: 15px;
+}
+#app select {
+  width: 100%;
+}
+</code>
+</pre>
+</div>
+
+  </div>
+  <div class="right-column">
+    <iframe src="./samples/ui-example.html" style="height: 500px;"/>    
+  </div>
+</div>
 
 ---
 
@@ -280,7 +375,6 @@ Yannik
 
 ## Styling
 
-- CSS
 - Sass
 - CSS Modules
 - Flexbox
@@ -291,9 +385,43 @@ Yannik
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
-## CSS
+## Sass
 
-Yannik: css variables from the API
+<div class="two-columns">
+  <div class="left-column">
+    <div data-fragment-id="add-widget" class="code-snippet">
+      <pre>
+        <code class="lang-html" data-trim data-line-numbers>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./src/main.scss&quot; /&gt;
+        </code>
+      </pre>
+    </div>
+    <div data-fragment-id="add-widget" class="code-snippet fragment">
+      <pre>
+        <code class="lang-scss" data-trim data-line-numbers>
+#app {
+  padding: 10px;
+  h2 {
+    font-size: 15px;
+  }
+  select {
+    width: 100%;
+  }
+}
+</code>
+
+</pre>
+</div>
+
+  </div>
+  <div class="right-column">
+    <pre>
+      <code class="lang-html" data-trim data-line-numbers>
+        npm install --save node-sass
+      </code>
+    </pre>
+  </div>
+</div>
 
 ---
 
@@ -301,7 +429,29 @@ Yannik: css variables from the API
 
 ## Sass
 
-Yannik: setup of sass with our API
+```sass
+$app-padding: 10px;
+
+#app {
+  padding: $app-padding;
+
+  h2 {
+    font-size: 15px;
+  }
+
+  select {
+    width: 100%;
+  }
+}
+```
+
+```sass
+@import "./variables";
+
+#app {
+  padding: $app-padding;
+  ...
+```
 
 ---
 
