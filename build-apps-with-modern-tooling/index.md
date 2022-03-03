@@ -515,11 +515,12 @@ const data = reactive({ map: webmap, layer: null });
 
 watchEffect(() => {
   if (data.layer) {
+    // Errors
     data.map.add(data.layer)
   }
 });
 
-// Errors out
+// Errors
 data.layer = new FeatureLayer(params)
 ```
 
