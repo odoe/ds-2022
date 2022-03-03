@@ -671,6 +671,15 @@ config.apiKey = import.meta.env.VITE_API_KEY;
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
+## CDN
+
+- Assets/workers loaded via CDN by default
+- Can still use AMD CDN for small apps
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
 ### **Where can I get more info?**
 
 - SDK Documentation
