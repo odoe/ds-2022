@@ -264,6 +264,15 @@ app.layerViews.on('after-add', (event) => {
 
 ---
 
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+## Decorators, mount up!
+
+- Extending Accessor
+- `@subclass()`
+- `@property()`
+
+---
+
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-4.png" -->
 
 <h2 style="text-align: left; font-size: 60px;">TypeScript App</h2>
