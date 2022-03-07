@@ -315,6 +315,7 @@ module.exports = {
 {
   "compilerOptions": {
     "target": "es6"
+    "moduleResolution": "Node"
   },
   "include": ["**/*.ts", "src/main.js"],
   "exclude": ["**/node_modules/**"]
@@ -351,6 +352,9 @@ module.exports = {
     <div class="code-snippet fragment">
       <pre>
         <code class="lang-css" data-trim data-line-numbers>
+#app {
+  padding: 20px;
+}
 #app h2 {
   font-size: 15px;
 }
@@ -360,10 +364,66 @@ module.exports = {
 </code>
 </pre>
 </div>
-
   </div>
   <div class="right-column">
     <iframe src="./samples/ui-example.html" style="height: 500px;"/>    
+  </div>
+</div>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## TSX
+
+<div class="two-columns">
+  <div class="left-column">
+    <div class="code-snippet">
+      <pre>
+      > MyWidget.ts
+        <code class="lang-ts" data-trim data-line-numbers>
+class MyWidget extends Widget {
+  render() {
+    return (
+      &lt;div id=&quot;app&quot; class=&quot;esri-widget&quot;&gt;
+        ...
+      &lt;/div&gt;
+    );
+  }
+}
+        </code>
+      </pre>
+    </div>
+    <div class="code-snippet">
+      <pre>
+      > main.ts
+        <code class="lang-ts" data-trim data-line-numbers>
+import MyWidget from "./MyWidget.ts";
+view.ui.add(new MyWidget(), "top-right");
+</code>
+</pre>
+</div>
+
+  </div>
+  <div class="right-column">
+    <div class="code-snippet fragment">
+      <pre>
+        <code class="lang-json" data-trim data-line-numbers>
+{
+  "compilerOptions": {
+    "target": "es6",
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "jsxFactory": "tsx",
+    "lib": ["ES2020", "DOM"]
+  },
+  "include": ["**/*.ts", "src/main.js"],
+  "exclude": ["**/node_modules/**"]
+}
+        </code>
+      </pre>
+    </div>
   </div>
 </div>
 
@@ -398,7 +458,7 @@ module.exports = {
       <pre>
         <code class="lang-scss" data-trim data-line-numbers>
 #app {
-  padding: 10px;
+  padding: 20px;
   h2 {
     font-size: 15px;
   }
@@ -425,10 +485,10 @@ module.exports = {
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
-## Sass
+## Sass variables
 
 ```sass
-$app-padding: 10px;
+$app-padding: 20px;
 
 #app {
   padding: $app-padding;
@@ -457,7 +517,82 @@ $app-padding: 10px;
 
 ## Calcite components
 
-Yannik
+<div class="two-columns">
+  <div class="left-column">
+    <div data-fragment-id="add-widget" class="code-snippet">
+      <pre>
+        <code class="lang-shell" data-trim data-line-numbers>
+npm install --save @esri/calcite-components
+        </code>
+      </pre>
+    </div>
+    <div data-fragment-id="add-widget" class="code-snippet fragment">
+      > MyWidget.tsx
+      <pre>
+        <code class="lang-typescript" data-trim data-line-numbers>
+import "@esri/calcite-components/dist/components/calcite-select";
+import "@esri/calcite-components/dist/components/calcite-option";
+...
+return (
+  &lt;calcite-select id=&quot;basemap&quot;&gt;
+  &lt;calcite-option value=&quot;satellite&quot;&gt;Satellite&lt;/calcite-option&gt;
+    ...
+  &lt;/calcite-select&gt;
+);
+      </code>
+    </pre>
+  </div>
+  <div data-fragment-id="add-widget" class="code-snippet fragment">
+      > main.ts
+      <pre>
+        <code class="lang-typescript" data-trim data-line-numbers>
+import { setAssetPath } from 
+  "@esri/calcite-components/dist/components";
+// CDN hosted assets
+setAssetPath(
+"https://unpkg.com/@esri/calcite-components/dist/calcite/assets"
+);
+      </code>
+    </pre>
+  </div>
+
+  </div>
+  <div class="right-column">
+    <iframe src="./samples/calcite-components.html" style="height: 500px;"/>    
+  </div>
+</div>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## CSS Variables
+
+<div class="two-columns">
+  <div class="left-column">
+    <div data-fragment-id="add-widget" class="code-snippet">
+      <pre>
+        <code class="lang-css" data-trim data-line-numbers>
+--calcite-ui-brand: green;
+--calcite-ui-text-1: #212020;
+--calcite-font-size-0: 1rem;
+      </code>
+    </pre>
+  </div>
+  <div data-fragment-id="add-widget" class="code-snippet">
+      <pre>
+        <code class="lang-css" data-trim data-line-numbers>
+#app {
+  color: --calcite-ui-text-1;
+}
+    </pre>
+  </div>
+
+  </div>
+  <div class="right-column">
+    <img src="./images/css-variables.png" style="width: 400px;" class="fragment" />
+  </div>
+</div>
 
 ---
 

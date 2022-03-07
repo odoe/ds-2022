@@ -19,10 +19,19 @@
       #app h2 {
         font-size: 15px;
       }
-      #app select {
+      #app #basemap {
         width: 100%;
       }
     </style>
+    <script
+      type="module"
+      src="https://unpkg.com/@esri/calcite-components@1.0.0-beta.78/dist/calcite/calcite.esm.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@esri/calcite-components@1.0.0-beta.78/dist/calcite/calcite.css"
+    />
     <script type="module">
       import SceneView from "https://jsdev.arcgis.com/4.23/@arcgis/core/views/SceneView.js";
 
@@ -33,22 +42,18 @@
         },
       });
 
-      const dropdown = document.getElementById("basemap");
-      dropdown.onchange = (e) => {
-        view.map.basemap = e.target.options[e.target.selectedIndex].value;
-      };
       view.ui.add(document.getElementById("app"), "top-right");
     </script>
   </head>
   <body>
     <div id="app" class="esri-widget">
       <h2>Choose basemap</h2>
-      <select id="basemap">
-        <option value="topo-vector">Topo</option>
-        <option value="satellite">Satellite</option>
-        <option value="oceans">Oceans</option>
-        <option value="osm">Open Street Map</option>
-      </select>
+      <calcite-select id="basemap">
+        <calcite-option value="topo-vector">Topo</calcite-option>
+        <calcite-option value="satellite">Satellite</calcite-option>
+        <calcite-option value="oceans">Oceans</calcite-option>
+        <calcite-option value="osm">Open Street Map</calcite-option>
+      </calcite-select>
     </div>
     <div id="viewDiv"></div>
   </body>
