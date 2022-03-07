@@ -227,48 +227,45 @@ require(["./code1", "code2"], function (code1, code2) {
 ```js
 module.exports = {
   entry: {
-    index: './src/index.js'
+    index: "./src/index.js",
   },
   node: false,
   output: {
-    path: path.join(__dirname, 'dist'),
-    chunkFilename: 'chunks/[id].js',
-    publicPath: '',
-    clean: true
+    path: path.join(__dirname, "dist"),
+    chunkFilename: "chunks/[id].js",
+    publicPath: "",
+    clean: true,
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      title: 'ArcGIS API  for JavaScript',
-      template: './public/index.html',
-      filename: './index.html',
-      chunksSortMode: 'none',
-      inlineSource: '.(css)$'
+      title: "ArcGIS API  for JavaScript",
+      template: "./public/index.html",
+      filename: "./index.html",
+      chunksSortMode: "none",
+      inlineSource: ".(css)$",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[chunkhash].css",
-      chunkFilename: "[id].css"
-    })
-  ]
+      chunkFilename: "[id].css",
+    }),
+  ],
 };
 ```
 
@@ -279,8 +276,9 @@ module.exports = {
 ## Webpack
 
 [`@arcgis/webpack-plugin`](https://github.com/Esri/arcgis-webpack-plugin)
-* Useful to copy assets locally
-* Can filter unused assets
+
+- Useful to copy assets locally
+- Can filter unused assets
 
 ```js
 // webpack.config.js
@@ -417,7 +415,7 @@ module.exports = {
   <div class="right-column">
     <pre>
       <code class="lang-html" data-trim data-line-numbers>
-        npm install --save node-sass
+        npm install --save sass
       </code>
     </pre>
   </div>
@@ -489,7 +487,7 @@ Yannik: to show how to have simple setup with the API
 
 ## Vue
 
-* Using Calcite Components?
+- Using Calcite Components?
   - Don't let Vue compile them
 
 ```js
@@ -504,24 +502,24 @@ compilerOptions: {
 
 ## Vue
 
-* Limitations
-* Vue reactivity uses Proxy
+- Limitations
+- Vue reactivity uses Proxy
   - Don't store ArcGIS instances directly
 
 ```js
-import { reactive, watchEffect } from 'vue'
+import { reactive, watchEffect } from "vue";
 
 const data = reactive({ map: webmap, layer: null });
 
 watchEffect(() => {
   if (data.layer) {
     // Errors
-    data.map.add(data.layer)
+    data.map.add(data.layer);
   }
 });
 
 // Errors
-data.layer = new FeatureLayer(params)
+data.layer = new FeatureLayer(params);
 ```
 
 ---
