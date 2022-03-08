@@ -355,9 +355,11 @@ module.exports = {
 #app {
   padding: 20px;
 }
+&nbsp;
 #app h2 {
   font-size: 15px;
 }
+&nbsp;
 #app select {
   width: 100%;
 }
@@ -376,12 +378,15 @@ module.exports = {
 
 ## TSX
 
+<div style="clear:both"><pre style="display:inline"><code class="html" style="display:inline">&lt;div&gt&lt;/div&gt</code></pre> -> <pre style="display:inline"><code style="display:inline">tsx("div")</code></pre></div>
+<br/>
 <div class="two-columns">
-  <div class="left-column">
+  <div class="left-column fragment">
     <div class="code-snippet">
       <pre>
       > MyWidget.ts
         <code class="lang-ts" data-trim data-line-numbers>
+@subclass("MyWidget")
 class MyWidget extends Widget {
   render() {
     return (
@@ -408,6 +413,7 @@ view.ui.add(new MyWidget(), "top-right");
   <div class="right-column">
     <div class="code-snippet fragment">
       <pre>
+      > tsconfig.json
         <code class="lang-json" data-trim data-line-numbers>
 {
   "compilerOptions": {
@@ -416,7 +422,8 @@ view.ui.add(new MyWidget(), "top-right");
     "importHelpers": true,
     "jsx": "react",
     "jsxFactory": "tsx",
-    "lib": ["ES2020", "DOM"]
+    "lib": ["ES2020", "DOM"],
+    "moduleResolution": "node",
   },
   "include": ["**/*.ts", "src/main.js"],
   "exclude": ["**/node_modules/**"]
@@ -425,6 +432,127 @@ view.ui.add(new MyWidget(), "top-right");
       </pre>
     </div>
   </div>
+</div>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Composition
+
+<div>
+  <img src="./images/lifecycle.svg" style="width: 300px" />
+</div>
+<br/>
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Composition
+
+<div class="code-snippet">
+  <pre>
+  > MyWidget.ts
+    <code class="lang-ts" data-trim data-line-numbers>
+import BasemapGallery from
+  "@arcgis/core/widgets/BasemapGallery";
+&nbsp;
+@subclass("MyWidget")
+class MyWidget extends Widget {
+  @property()
+  view: SceneView;
+&nbsp;
+  render() {
+    return (
+      &lt;BasemapGallery view={this.view} /&gt;
+    );
+  }
+}
+</code>
+
+  </pre>
+</div>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Composition
+
+<div class="code-snippet">
+  <pre>
+  > MyWidget.ts
+    <code class="lang-ts" data-trim data-line-numbers>
+import MySecondWidget from "./MySecondWidget";
+&nbsp;
+@subclass("MyWidget")
+class MyWidget extends Widget {
+  @property()
+  view: SceneView;
+&nbsp;
+  render() {
+    return (
+      &lt;MySecondWidget /&gt;
+    );
+  }
+}
+</code>
+  </pre>
+</div>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## State Management
+
+<div class="code-snippet">
+  <pre>
+    <code class="lang-ts" data-line-numbers>
+class Person extends Accessor {
+  @property()
+  firstname: string = "Yannik";
+&nbsp;
+  @property()
+  lastname: string = "Messerli";
+&nbsp;
+  @property()
+  get fullname() {
+    return `${this.firstname} ${this.lastname}`;
+  }
+}
+</code>
+  </pre>
+</div>
+<div class="code-snippet">
+  <pre>
+    <code class="lang-ts" data-trim data-line-numbers>
+const me = new Person();
+me.firstname = "René";
+console.log(me.fullname); // René Messerli
+</code>
+
+  </pre>
+</div>
+
+---
+
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## reactiveUtils
+
+<div class="code-snippet">
+  <pre>
+    > main.ts
+    <code class="lang-ts" data-line-numbers>
+    import { watch } from "@arcgis/core/core/reactiveUtils.js";
+    ...
+    watch(
+      () => view.map.basemap,
+      (basemap) => (myWidget.basemap = basemap.id)
+    );
+    </code>
+  </pre>
 </div>
 
 ---
@@ -535,7 +663,7 @@ import "@esri/calcite-components/dist/components/calcite-option";
 ...
 return (
   &lt;calcite-select id=&quot;basemap&quot;&gt;
-  &lt;calcite-option value=&quot;satellite&quot;&gt;Satellite&lt;/calcite-option&gt;
+    &lt;calcite-option value=&quot;satellite&quot;&gt;Satellite&lt;/calcite-option&gt;
     ...
   &lt;/calcite-select&gt;
 );
@@ -607,14 +735,6 @@ setAssetPath(
 - Ember
 - Solid
 - ... and more, and more
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## React
-
-Yannik: to show how to have simple setup with the API
 
 ---
 
