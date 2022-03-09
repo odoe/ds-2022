@@ -182,7 +182,8 @@ require(["./code1", "code2"], function (code1, code2) {
   &lt;head&gt;
     &lt;link
       rel=&quot;stylesheet&quot;
-      href=&quot;https://js.arcgis.com/4.23/esri/themes/light/main.css&quot;
+      href=
+      &quot;https://js.arcgis.com/4.23/esri/themes/light/main.css&quot;
     /&gt;
     &lt;link rel=&quot;stylesheet&quot; href=&quot;./src/main.css&quot; /&gt;
     &lt;script type=&quot;module&quot; src=&quot;./src/main.js&quot;&gt;&lt;/script&gt;
@@ -191,6 +192,20 @@ require(["./code1", "code2"], function (code1, code2) {
     &lt;div id=&quot;viewDiv&quot;&gt;&lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;
+        </code>
+      </pre>
+    </div>
+    <div data-fragment-id="add-widget" class="code-snippet">
+      <pre>
+        <code class="lang-css" data-trim data-line-numbers>
+html,
+body,
+#viewDiv {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
         </code>
       </pre>
     </div>
@@ -509,6 +524,7 @@ class MyWidget extends Widget {
 <div class="code-snippet">
   <pre>
     <code class="lang-ts" data-line-numbers>
+@subclass("Person")
 class Person extends Accessor {
   @property()
   firstname: string = "Yannik";
@@ -544,8 +560,9 @@ console.log(me.fullname); // René Messerli
 <div class="code-snippet">
   <pre>
     > main.ts
-    <code class="lang-ts" data-line-numbers>
-    import { watch } from "@arcgis/core/core/reactiveUtils.js";
+    <code class="lang-ts" data-line-numbers data-trim>
+    import { watch } from 
+      "@arcgis/core/core/reactiveUtils.js";
     ...
     watch(
       () => view.map.basemap,
