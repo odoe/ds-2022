@@ -381,6 +381,19 @@ module.exports = {
 </code>
 </pre>
 </div>
+    <div data-fragment-id="add-widget" class="code-snippet">
+      <pre>
+        <code class="lang-js" data-trim data-line-numbers>
+const select = document.getElementById("select");
+select.addEventListener("change", (e) => {
+  const target = e.target as HTMLSelectElement;
+  view.map = {
+    basemap: target.value,
+  };
+});
+</code>
+</pre>
+</div>
   </div>
   <div class="right-column">
     <iframe src="./samples/ui-example.html" style="height: 500px;"/>    
@@ -512,63 +525,6 @@ class MyWidget extends Widget {
   }
 }
 </code>
-  </pre>
-</div>
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## State Management
-
-<div class="code-snippet">
-  <pre>
-    <code class="lang-ts" data-line-numbers>
-@subclass("Person")
-class Person extends Accessor {
-  @property()
-  firstname: string = "Yannik";
-&nbsp;
-  @property()
-  lastname: string = "Messerli";
-&nbsp;
-  @property()
-  get fullname() {
-    return `${this.firstname} ${this.lastname}`;
-  }
-}
-</code>
-  </pre>
-</div>
-<div class="code-snippet">
-  <pre>
-    <code class="lang-ts" data-trim data-line-numbers>
-const me = new Person();
-me.firstname = "René";
-console.log(me.fullname); // René Messerli
-</code>
-
-  </pre>
-</div>
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## reactiveUtils
-
-<div class="code-snippet">
-  <pre>
-    > main.ts
-    <code class="lang-ts" data-line-numbers data-trim>
-    import { watch } from 
-      "@arcgis/core/core/reactiveUtils.js";
-    ...
-    watch(
-      () => view.map.basemap,
-      (basemap) => (myWidget.basemap = basemap.id)
-    );
-    </code>
   </pre>
 </div>
 
