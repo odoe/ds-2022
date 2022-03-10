@@ -323,7 +323,16 @@ module.exports = {
 
 ## Typescript
 
-```json
+<div class="code-snippet">
+  <pre>
+    <code class="lang-html" data-trim data-line-numbers>
+&lt;script type="module" src="src/main.ts"&gt;&lt;/script&gt;
+    </code>
+  </pre>
+</div>
+<div class="code-snippet fragment">
+  <pre>
+    <code class="lang-json" data-trim data-line-numbers>
 {
   "compilerOptions": {
     "target": "es6"
@@ -332,11 +341,9 @@ module.exports = {
   "include": ["**/*.ts", "src/main.js"],
   "exclude": ["**/node_modules/**"]
 }
-```
-
-```html
-<script type="module" src="src/main.ts"></script>
-```
+    </code>
+  </pre>
+</div>
 
 ---
 
