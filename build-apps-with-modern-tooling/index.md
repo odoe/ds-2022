@@ -438,7 +438,7 @@ export default class MyWidget extends Widget {
       <pre>
       > main.ts
         <code class="lang-ts" data-trim data-line-numbers>
-import MyWidget from "./MyWidget.ts";
+import MyWidget from "./MyWidget";
 view.ui.add(new MyWidget(), "top-right");
 </code>
 </pre>
