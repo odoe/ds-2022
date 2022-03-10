@@ -368,7 +368,7 @@ module.exports = {
         </code>
       </pre>
     </div>
-    <div class="code-snippet fragment">
+    <div class="code-snippet">
       <pre>
         <code class="lang-css" data-trim data-line-numbers>
 #app {
@@ -388,14 +388,13 @@ module.exports = {
     <div data-fragment-id="add-widget" class="code-snippet">
       <pre>
         <code class="lang-js" data-trim data-line-numbers>
-const select = document.getElementById("select");
-select.addEventListener("change", (e) => {
-  const target = e.target as HTMLSelectElement;
-  view.map = {
-    basemap: target.value,
-  };
-});
+const dropdown = document.getElementById("basemap");
+dropdown.onchange = (e) => {
+  view.map.basemap = e.target.options[e.target.selectedIndex].value;
+};
+view.ui.add(document.getElementById("app"), "top-right");
 </code>
+
 </pre>
 </div>
   </div>
@@ -418,8 +417,12 @@ select.addEventListener("change", (e) => {
       <pre>
       > MyWidget.ts
         <code class="lang-ts" data-trim data-line-numbers>
+import { tsx } from "@arcgis/core/widgets/support/widget";
+import Widget from "@arcgis/core/widgets/Widget";
+import { subclass } from "esri/core/accessorSupport/decorators";
+&nbsp;
 @subclass("MyWidget")
-class MyWidget extends Widget {
+export default class MyWidget extends Widget {
   render() {
     return (
       &lt;div id=&quot;app&quot; class=&quot;esri-widget&quot;&gt;
