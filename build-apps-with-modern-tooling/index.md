@@ -226,9 +226,6 @@ body,
         npx vite build
       </code>
     </pre>
-    <div class="fragment">
-      <img src="./images/vite-build.png" />
-  </div>
 </div>
 
 ---
